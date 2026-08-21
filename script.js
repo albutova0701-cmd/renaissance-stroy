@@ -1,23 +1,19 @@
-// Плавное появление секций при прокрутке.
-// Если пользователь отключил анимации в системе, ничего дополнительно не делаем.
-document.addEventListener('DOMContentLoaded', () => {
+// Плавное появление блоков при скролле (Intersection Observer)
+document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.about, .services, .contacts');
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        return;
-    }
-
-    const observer = new IntersectionObserver((entries, obs) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                obs.unobserve(entry.target);
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.2 });
 
     sections.forEach(section => {
-        section.classList.add('reveal');
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.8s, transform 0.8s';
         observer.observe(section);
     });
 });

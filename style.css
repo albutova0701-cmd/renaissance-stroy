@@ -585,6 +585,13 @@ footer a {
     .brand-text small {
         font-size: .52rem;
         letter-spacing: .12em;
+        line-height: 1.35;
+    }
+
+    .brand-text .brand-subtitle-first,
+    .brand-text .brand-subtitle-second {
+        display: block;
+        white-space: nowrap;
     }
 
     nav {
