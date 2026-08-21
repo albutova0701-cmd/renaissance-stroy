@@ -588,10 +588,19 @@ footer a {
         line-height: 1.35;
     }
 
-    .brand-text .brand-subtitle-first,
+    .brand-text .brand-subtitle-first {
+        display: inline;
+        white-space: nowrap;
+    }
+
+    .brand-text .brand-subtitle-divider {
+        display: none;
+    }
+
     .brand-text .brand-subtitle-second {
         display: block;
         white-space: nowrap;
+        margin-top: 0.15em;
     }
 
     nav {
