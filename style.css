@@ -777,6 +777,21 @@ footer a {
 }
 
 
+/* В узком WebView мессенджеров меню немного опускаем и уменьшаем,
+   не затрагивая обычную мобильную версию браузера. */
+@media (max-width: 390px) {
+    nav {
+        position: relative;
+        top: 5px;
+        gap: 7px;
+    }
+
+    nav a {
+        font-size: .55rem;
+        line-height: 1;
+    }
+}
+
 @media (max-width: 370px) {
     .container {
         width: calc(100% - 16px);
