@@ -17,3 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(section);
     });
 });
+
+// Отдельная настройка для встроенных браузеров мессенджеров.
+// В обычном Safari/Chrome этот класс не добавляется, поэтому их верстка не меняется.
+document.addEventListener('DOMContentLoaded', function() {
+    const ua = navigator.userAgent || '';
+    const isMessengerWebView = /MAX|Telegram|WebView|; wv\)/i.test(ua);
+    if (isMessengerWebView) {
+        document.body.classList.add('messenger-webview');
+    }
+});

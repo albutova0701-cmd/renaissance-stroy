@@ -831,6 +831,26 @@ footer a {
         font-size: .55rem;
     }
 }
+/* Только для встроенного браузера мессенджера: возвращаем аккуратную шапку,
+   которая была до последних изменений. Обычный мобильный браузер не затрагивается. */
+@media (max-width: 640px) {
+    body.messenger-webview .header-flex {
+        align-items: center;
+    }
+
+    body.messenger-webview nav {
+        position: relative;
+        top: 9px;
+        gap: 7px;
+    }
+
+    body.messenger-webview nav a {
+        font-size: .55rem;
+        line-height: 1;
+        letter-spacing: 0;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
