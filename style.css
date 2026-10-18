@@ -883,3 +883,74 @@ footer a {
         transform: none;
     }
 }
+
+
+/* Финальная адаптация шапки для узких экранов и WebView мессенджеров.
+   Бренд занимает верхнюю строку, навигация — отдельную строку ниже,
+   поэтому название и подзаголовок не пересекаются с пунктами меню. */
+@media (max-width: 640px) {
+    .site-header .header-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 8px;
+        min-height: 0;
+        padding-top: 12px;
+        padding-bottom: 10px;
+    }
+
+    .site-header .brand {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 auto;
+        align-items: center;
+    }
+
+    .site-header .brand-text {
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    .site-header .brand-text strong {
+        font-size: clamp(.72rem, 3.4vw, .88rem);
+        white-space: nowrap;
+    }
+
+    .site-header .brand-text small {
+        display: block;
+        white-space: normal;
+        font-size: clamp(.31rem, 1.55vw, .42rem);
+        letter-spacing: .035em;
+        line-height: 1.25;
+        margin-top: 5px;
+    }
+
+    .site-header .brand-subtitle-first,
+    .site-header .brand-subtitle-divider,
+    .site-header .brand-subtitle-second {
+        white-space: normal;
+    }
+
+    .site-header nav {
+        position: static;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex: 0 0 auto;
+        flex-wrap: nowrap;
+        gap: clamp(10px, 3vw, 18px);
+        padding: 2px 0 0;
+        margin: 0;
+    }
+
+    .site-header nav a {
+        display: inline-block;
+        flex: 0 0 auto;
+        font-size: clamp(.56rem, 2.5vw, .68rem);
+        line-height: 1.2;
+        letter-spacing: 0;
+        white-space: nowrap;
+    }
+}
