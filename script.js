@@ -18,12 +18,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Отдельная настройка для встроенных браузеров мессенджеров.
-// В обычном Safari/Chrome этот класс не добавляется, поэтому их верстка не меняется.
+// Определяем встроенный браузер мессенджера.
+// На iOS некоторые WebView не указывают название приложения в User-Agent,
+// поэтому дополнительно проверяем признаки WKWebView.
 document.addEventListener('DOMContentLoaded', function() {
     const ua = navigator.userAgent || '';
-    const isMessengerWebView = /MAX|Telegram|WebView|; wv\)/i.test(ua);
-    if (isMessengerWebView) {
+    const isKnownMessenger = /MAX|Telegram|WebView|; wv\)|VK[Ii]?|Instagram|FBAN|FBAV/i.test(ua);
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isIOSWebView = isIOS && /AppleWebKit/i.test(ua) &&
+        !/(Version\/[\d.]+.*Safari|CriOS|FxiOS|EdgiOS|OPiOS)/i.test(ua);
+
+    if (isKnownMessenger || isIOSWebView) {
         document.body.classList.add('messenger-webview');
     }
 });

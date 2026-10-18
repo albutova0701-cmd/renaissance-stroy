@@ -832,24 +832,20 @@ footer a {
         font-size: .55rem;
     }
 }
-/* Только для встроенного браузера мессенджера: возвращаем аккуратную шапку,
-   которая была до последних изменений. Обычный мобильный браузер не затрагивается. */
+/* Во встроенном браузере мессенджера скрываем навигацию,
+   чтобы она не наезжала на название компании. В обычном браузере меню остаётся. */
 @media (max-width: 640px) {
-    body.messenger-webview .header-flex {
-        align-items: center;
-    }
-
     body.messenger-webview nav {
-        position: relative;
-        top: 16px;
-        gap: 6px;
-        align-self: center;
+        display: none !important;
     }
 
-    body.messenger-webview nav a {
-        font-size: .52rem;
-        line-height: 1;
-        letter-spacing: 0;
+    body.messenger-webview .header-flex {
+        justify-content: flex-start;
+    }
+
+    body.messenger-webview .brand {
+        flex: 1 1 100%;
+        max-width: 100%;
     }
 }
 
